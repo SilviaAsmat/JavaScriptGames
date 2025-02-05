@@ -37,6 +37,13 @@ function initialize() {
                 }
             }
         }
+        else if (e.code == "Backspace") {
+            if (0 < col && col <= width) {
+                col -=1;
+            }
+            let currTile = document.getElementById(row.toString() + '-' + col.toString());
+            currTile.innerText = "";
+        }
 
     })
 }
