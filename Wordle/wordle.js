@@ -5,7 +5,7 @@ var row = 0;// current attempt
 var col = 0;// current letter
 
 var gameOver = false;
-var word = "Squid"; 
+var word = "SQUID"; 
 
 window.onload = function(){
     initialize();
@@ -45,7 +45,41 @@ function initialize() {
             currTile.innerText = "";
         }
 
+        else if (e.code == "Enter") {
+            update();
+            row += 1; //start new row
+            col = 0; // start at 0
+        }
+
+        if(!gameOver && row == height) {
+            gameOver = true;
+            document.getElementById("answer").innerText = word;
+        }
+
     })
+}
+
+function update() {
+    let correct = 0;
+    for (let c = 0; c < width; c++) {
+        let currTile = document.getElementById(row.toString() + '-' + c.toString());
+        let letter = currTile.innerText;
+
+        if(word[c] == letter) {
+            currTile.classList.add("correct");
+            correct += 1;
+        }
+        else if ( word.includes(letter)) {
+            currTile.classList.add("present");
+        }
+        else {
+            currTile.classList.add("absent");
+        }
+
+        if (correct == width) {
+            gameOver = true;
+        }
+    }
 }
 
 
