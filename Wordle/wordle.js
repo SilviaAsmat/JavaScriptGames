@@ -23,3 +23,24 @@ function initialize() {
             document.getElementById("board").appendChild(tile); 
         }
     }
+    // Listen for Key Press
+    document.addEventListener("keyup", (e) => {
+        if(gameOver) return;
+
+        //alert(e.code);
+        if ("KeyA" <= e.code && e.code <= "KeyZ") {
+            if (col < width) {
+                let currTile = document.getElementById(row.toString() + '-' + col.toString());
+                if (currTile.innerText == "") {
+                    currTile.innerText = e.code[3];
+                    col += 1;
+                }
+            }
+        }
+
+    })
+}
+
+
+
+
