@@ -25,6 +25,15 @@ function getRandomCard() {
     return randomNumber;
   }
 }
+
+function startGame() {
+  isAlive = true;
+  let firstCard = getRandomCard();
+  let secondCard = getRandomCard();
+  cards = [firstCard, secondCard];
+  sum = firstCard + secondCard;
+  renderGame();
+}
 function newCard() {
   if (isAlive === true && hasBlackJack === false) {
     let card = getRandomCard();
